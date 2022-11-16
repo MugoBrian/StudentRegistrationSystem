@@ -1,0 +1,99 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.Separator?>
+<?import javafx.scene.control.SplitPane?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.BorderPane?>
+<?import javafx.scene.layout.ColumnConstraints?>
+<?import javafx.scene.layout.GridPane?>
+<?import javafx.scene.layout.RowConstraints?>
+<?import javafx.scene.text.Font?>
+<?import javafx.scene.text.Text?>
+
+<AnchorPane prefHeight="680.0" prefWidth="1120.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.studentregistrationsystem.Bursar.BursarController">
+    <BorderPane layoutX="-12.0" prefHeight="680.0" prefWidth="1157.0">
+        <top>
+            <AnchorPane prefHeight="88.0" prefWidth="1184.0" BorderPane.alignment="CENTER">
+                <Text layoutX="35.0" layoutY="52.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Bursar Dashboard" wrappingWidth="281.7294921875">
+                    <font>
+                        <Font size="22.0" />
+                    </font>
+                </Text>
+                <Text layoutX="399.0" layoutY="52.0" strokeType="OUTSIDE" strokeWidth="0.0" text="ID:" wrappingWidth="41.4287109375">
+                    <font>
+                        <Font size="22.0" />
+                    </font>
+                </Text>
+                <Button layoutX="1069.0" layoutY="25.0" mnemonicParsing="false" onAction="#logout" prefHeight="36.0" prefWidth="104.0" text="Logout" />
+                <Label fx:id="lblAdmissionsID" layoutX="440.0" layoutY="24.0" prefHeight="41.0" prefWidth="124.0">
+                    <font>
+                        <Font size="22.0" />
+                    </font>
+                </Label>
+                <Text layoutX="619.0" layoutY="51.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Name:" wrappingWidth="97.4287109375">
+                    <font>
+                        <Font size="22.0" />
+                    </font>
+                </Text>
+                <Label fx:id="lblAdmissionsName" layoutX="706.0" layoutY="24.0" prefHeight="41.0" prefWidth="226.0">
+                    <font>
+                        <Font size="22.0" />
+                    </font>
+                </Label>
+            </AnchorPane>
+        </top>
+        <center>
+            <SplitPane orientation="VERTICAL" prefHeight="200.0" prefWidth="160.0" BorderPane.alignment="CENTER">
+                <AnchorPane prefHeight="651.0" prefWidth="1130.0">
+                    <Button layoutX="135.0" layoutY="27.0" mnemonicParsing="false" onAction="#editStudent" prefHeight="32.0" prefWidth="99.0" text="Edit" />
+                    <Button layoutX="245.0" layoutY="27.0" mnemonicParsing="false" onAction="#deleteStudent" prefHeight="32.0" prefWidth="123.0" text="Delete" />
+                    <Text layoutX="33.0" layoutY="90.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Student Fee Details" wrappingWidth="302.7294921875">
+                        <font>
+                            <Font size="19.0" />
+                        </font>
+                    </Text>
+                    <Separator layoutX="14.0" layoutY="94.0" prefHeight="19.0" prefWidth="343.0" AnchorPane.leftAnchor="14.0" AnchorPane.rightAnchor="798.0" AnchorPane.topAnchor="94.0" />
+                    <GridPane layoutX="15.0" layoutY="126.0" prefHeight="261.0" prefWidth="340.0">
+                        <columnConstraints>
+                            <ColumnConstraints hgrow="SOMETIMES" maxWidth="164.0" minWidth="10.0" prefWidth="99.0" />
+                            <ColumnConstraints hgrow="SOMETIMES" maxWidth="245.0" minWidth="10.0" prefWidth="241.0" />
+                        </columnConstraints>
+                        <rowConstraints>
+                            <RowConstraints maxHeight="140.0" minHeight="10.0" prefHeight="123.0" vgrow="SOMETIMES" />
+                            <RowConstraints maxHeight="144.0" minHeight="10.0" prefHeight="138.0" vgrow="SOMETIMES" />
+                        </rowConstraints>
+                        <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Student ID" />
+                        <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Fee Amount" GridPane.rowIndex="1" />
+                        <TextField fx:id="fieldStdID" promptText="Enter ID" GridPane.columnIndex="1" />
+                        <TextField fx:id="fieldStdFeeAmount" promptText="Fee Amount" GridPane.columnIndex="1" GridPane.rowIndex="1" />
+                    </GridPane>
+                    <Button fx:id="saveBtn" layoutX="117.0" layoutY="391.0" mnemonicParsing="false" onAction="#save" prefHeight="31.0" prefWidth="67.0" text="Save" />
+                    <Button fx:id="deleteBtn" layoutX="286.0" layoutY="391.0" mnemonicParsing="false" onAction="#cancel" prefHeight="32.0" prefWidth="69.0" text="Cancel" />
+                    <AnchorPane layoutX="381.0" prefHeight="741.0" prefWidth="804.0">
+                        <Button layoutX="24.0" layoutY="27.0" mnemonicParsing="false" onAction="#refresh" prefHeight="32.0" prefWidth="86.0" text="Refresh" />
+                        <Button layoutX="645.0" layoutY="27.0" mnemonicParsing="false" onAction="#searchStudent" prefHeight="32.0" prefWidth="104.0" text="Search" />
+                        <TextField fx:id="fieldSearch" layoutX="394.0" layoutY="26.0" prefHeight="34.0" prefWidth="226.0" promptText="Search By Student ID" />
+                        <TableView fx:id="feeTableView" layoutX="-5.0" layoutY="83.0" prefHeight="660.0" prefWidth="809.0">
+                            <columns>
+                                <TableColumn fx:id="colStdID" prefWidth="113.0" text="ID" />
+                                <TableColumn fx:id="colStdName" prefWidth="122.0" text="Name" />
+                                <TableColumn fx:id="colStdEmail" minWidth="0.0" prefWidth="129.0" text="Email" />
+                        <TableColumn fx:id="colCourse" prefWidth="118.0" text="Course" />
+                                <TableColumn fx:id="colYear" prefWidth="163.0" text="Year Of Study" />
+                        <TableColumn fx:id="colFeeAmount" prefWidth="238.0" text="Fee Amount" />
+                            </columns>
+                        </TableView>
+                  <Button layoutX="166.0" layoutY="27.0" mnemonicParsing="false" onAction="#printFeeStatement" prefHeight="32.0" prefWidth="86.0" text="Print" />
+                    </AnchorPane>
+                    <Separator layoutX="375.0" orientation="VERTICAL" prefHeight="653.0" prefWidth="6.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="375.0" AnchorPane.topAnchor="0.0" />
+                    <Button layoutX="26.0" layoutY="27.0" mnemonicParsing="false" onAction="#setAdd" prefHeight="32.0" prefWidth="99.0" text="Update" />
+                </AnchorPane>
+            </SplitPane>
+        </center>
+    </BorderPane>
+</AnchorPane>
