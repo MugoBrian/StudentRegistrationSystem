@@ -156,7 +156,7 @@ public class AdmissionController implements Initializable {
             informationAlert.show();
         }
         else{
-            sqlQuery = "Delete from students where Std_ID= '"+stdTable.getId()+"';";
+            sqlQuery = "Delete from Student where Std_ID= '"+stdTable.getId()+"';";
 
             database.getConnection().createStatement().executeUpdate(sqlQuery);
             stdTableView.setItems(getStudents(null));
@@ -176,7 +176,7 @@ public class AdmissionController implements Initializable {
         }
         else{
             setAllEnable();
-            sqlQuery = "Select * from students where Std_ID='"+stdTable.getId()+"';";
+            sqlQuery = "Select * from Student where Std_ID='"+stdTable.getId()+"';";
 
             result = database.getConnection().createStatement().executeQuery(sqlQuery);
             while (result.next()){
@@ -200,7 +200,7 @@ public class AdmissionController implements Initializable {
             informationAlert.setContentText("Kindly Enter Student ID!");
             informationAlert.show();
         }
-        sqlQuery = "Select * from students where Std_ID LIKE'%"+fieldSearch.getText()+"%';";
+        sqlQuery = "Select * from Student where Std_ID LIKE'%"+fieldSearch.getText()+"%';";
         result = database.getConnection().createStatement().executeQuery(sqlQuery);
         if(result.next()){
             stdTableView.setItems(getStudents(sqlQuery));
@@ -224,7 +224,7 @@ public class AdmissionController implements Initializable {
     public ObservableList<String> getCourses() throws SQLException{
         Connection connection = database.getConnection();
         Statement statement = connection.createStatement();
-        String sqlQuery = "Select * from courses;";
+        String sqlQuery = "Select * from Courses;";
         ResultSet result = statement.executeQuery(sqlQuery);
         ObservableList<String> courses = FXCollections.observableArrayList();
         while (result.next()){
@@ -269,7 +269,7 @@ public class AdmissionController implements Initializable {
     public ObservableList<String>  getStatus() throws SQLException{
         Connection connection = database.getConnection();
         Statement statement = connection.createStatement();
-        String sqlQuery = "select Distinct(Status) from students;";
+        String sqlQuery = "select Distinct(Status) from Student;";
         ResultSet result = statement.executeQuery(sqlQuery);
         ObservableList<String> courses = FXCollections.observableArrayList();
         while (result.next()){
@@ -313,7 +313,7 @@ public class AdmissionController implements Initializable {
         }
         else{
 
-        sqlQuery = "Select * from students;";
+        sqlQuery = "Select * from Student;";
         }
         ObservableList<StudentsTable> studentTableData = FXCollections.observableArrayList();
 
